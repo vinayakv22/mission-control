@@ -27,6 +27,8 @@ RUN if [ -f pnpm-lock.yaml ]; then \
 FROM base AS build
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# Disable Turbopack for production builds to avoid WASM binding issues on ARM v7
+ENV TURBOPACK=0
 RUN pnpm build
 
 FROM node:20-slim AS runtime
