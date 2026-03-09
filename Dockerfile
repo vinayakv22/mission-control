@@ -1,5 +1,14 @@
 FROM node:20-slim AS base
+
+# Ensure pnpm uses a single, deterministic config location inside the image build
+ENV PNPM_HOME=/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+ENV XDG_CONFIG_HOME=/pnpm-config
+# (optional but helpful) force npm/pnpm to use a single user config file
+ENV NPM_CONFIG_USERCONFIG=/pnpm-config/npmrc
+
 RUN corepack enable && corepack prepare pnpm@latest --activate
+
 WORKDIR /app
 
 FROM base AS deps
