@@ -27,7 +27,9 @@ RUN if [ -f pnpm-lock.yaml ]; then \
 FROM base AS build
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# Disable Turbopack for production builds to avoid WASM binding issues on ARM v7
+# Turbopack has been disabled globally; we no longer
+# attempt to build for ARM v7 and have seen WASM binding
+# issues there, so skip the feature entirely.
 ENV TURBOPACK=0
 RUN pnpm build
 

@@ -448,7 +448,10 @@ Docker images are published to GitHub Container Registry:
 ghcr.io/vinayakv22/mission-control:latest
 ```
 
-Supported architectures: amd64, arm64, arm/v7
+Supported architectures: amd64, arm64
+
+> **Note:** support for `arm/v7` has been removed – the build
+> image no longer targets that platform due to tooling issues.
 
 ### From Source
 
