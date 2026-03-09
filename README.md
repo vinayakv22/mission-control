@@ -428,6 +428,30 @@ Mission Control supports multi-project task organization per workspace:
 
 ## Deployment
 
+### Docker / CasaOS
+
+For Docker and CasaOS deployments, see [CASAOS.md](CASAOS.md) for detailed instructions.
+
+Quick start with Docker:
+
+```bash
+# Using docker-compose
+docker-compose up -d
+
+# Using CasaOS-specific compose file
+docker-compose -f docker-compose.casaos.yml up -d
+```
+
+Docker images are published to GitHub Container Registry:
+
+```
+ghcr.io/vinayakv22/mission-control:latest
+```
+
+Supported architectures: amd64, arm64, arm/v7
+
+### From Source
+
 ```bash
 # Build
 pnpm install --frozen-lockfile
